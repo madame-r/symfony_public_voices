@@ -1,0 +1,73 @@
+/* FONT FACE ******************************************************* */
+
+
+
+
+@font-face {
+    font-family: "Inter18_Regular";
+    src: url(../font/Inter_18pt-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Stanley";
+    src: url(../font/Stanley.otf);
+}
+
+
+
+
+/*  RESET ******************************************************* */
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter18_Regular";
+}
+
+
+img,
+svg,
+input,
+video {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+
+/*  BODY ******************************************************* */
+
+
+/* Nav */
+
+
+#nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+
+#logo-black p {
+    font-family: "Stanley";
+    font-size: 70px;
+}
+
+#register-login {
+    display: flex;
+}
+
+#register {
+    font-size: 35px;
+}
+
+#login {
+    margin-left: 50px;
+}
+
+#login i {
+    font-size: 50px;
+}
