@@ -2,7 +2,18 @@
 
 {% block title %}Public Voices{% endblock %}
 
+{% block javascripts %}
+{% block importmap %}
+{{ importmap('script_api') }}
+<script>
+    console.log("Script API chargé");
+</script>
+{% endblock %}
+{% endblock %}
+
 {% block body %}
-
-
+<ul id="books-list"></ul>
+<script>
+    console.log("Élément #books-list trouvé :", document.getElementById("books-list"));
+</script>
 {% endblock %}

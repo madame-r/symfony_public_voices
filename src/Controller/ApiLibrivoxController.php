@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Controller;
+
+use App\Service\ApiLibrivoxService;
+
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+use Symfony\Component\Routing\Attribute\Route;
+
+
+
+
+final class ApiLibrivoxController extends AbstractController
+{
+
+    private ApiLibrivoxService $apiLibrivoxService;
+
+
+    public function __construct(ApiLibrivoxService $apiLibrivoxService)
+    {
+        $this->apiLibrivoxService = $apiLibrivoxService;
+    }
+
+
+
+    #[Route('api/librivox/books', name: 'get_books', methods: ['GET'])]
+    public function getBooks(): JsonResponse
+    {
+
+        $data = $this->apiLibrivoxService->fetchBooks();
+        return $this->json($data);
+    }
+
+
+
+    #[Route('api/librivox/{audiobookId}/coverarts', name: 'get_coverart', methods: ['GET'])]
+    public function getCoverArts(int $audiobookId): JsonResponse
+    {
+        $coverarts = $this->apiLibrivoxService->fetchCoverArts($audiobookId);
+        return $this->json($coverarts);
+    }
+
+
+
+    #[Route('api/librivox/{audiobookId}/genres', name: 'get_genres', methods: ['GET'])]
+    public function getGenres(int $audiobookId): JsonResponse
+    {
+        $genres = $this->apiLibrivoxService->fetchGenres($audiobookId);
+        return $this->json($genres);
+    }
+
+
+
+    #[Route('api/librivox/{audiobookId}/audiotracks', name: 'get_audiotracks', methods: ['GET'])]
+    public function getAudioTracks(int $audiobookId): JsonResponse
+    {
+        $audiotracks = $this->apiLibrivoxService->fetchAudioTracks($audiobookId);
+        return $this->json($audiotracks);
+    }
+
+
+
+}

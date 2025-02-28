@@ -34,8 +34,12 @@ class ApiLibrivoxService
             $json = json_encode($xml);
             $data = json_decode($json, true);
 
+            // dd($data);
 
             return $data;
+
+
+
         } catch (\Exception $e) {
 
             return ['error' => $e->getMessage()];
@@ -59,23 +63,54 @@ class ApiLibrivoxService
 
             $data = json_decode($response->getContent(), true);
 
-            if (!isset($data['books'][0])) {
-                throw new \Exception('Aucun livre trouvé pour cet ID.');
-            }
+            // dd($data);
 
-            $book = $data['books'][0];
+            return $data;
+            
 
-            return [
-                'coverart_jpg' => $book['coverart_jpg'] ?? null,
-                'coverart_thumbnail' => $book['coverart_thumbnail'] ?? null,
-            ];
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
     }
 
 
+    public function fetchGenres(int $audiobookId): array
+    {
 
+        try {
+
+            $url = "https://librivox.org/api/feed/audiobooks/?id={$audiobookId}&extended=1&format=json";
+
+            $response = $this->httpClient->request('GET', $url);
+
+            if ($response->getStatusCode() !== 200) {
+                throw new \Exception('Erreur lors de la récupération des données Genres depuis Librivox.');
+            }
+
+            $data = json_decode($response->getContent(), true);
+
+            if (!isset($data['books'][0])) {
+                throw new \Exception('Aucun livre trouvé pour cet ID.');
+            }
+
+            $book = $data['books'][0];
+
+            $genres = [];
+
+            if (isset($book['genres']) && is_array($book['genres'])) {
+                foreach ($book['genres'] as $genre) {
+                    $genres[] = [
+                        'id' => $genre['id'] ?? null,
+                        'name' => $genre['name'] ?? null,
+                    ];
+                }
+            }
+
+            return $genres;
+        } catch (\Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
 
 
     public function fetchAudioTracks(int $audiobookId): array
@@ -117,43 +152,5 @@ class ApiLibrivoxService
     }
 
 
-
-    public function fetchGenres(int $audiobookId): array
-    {
-
-        try {
-
-            $url = "https://librivox.org/api/feed/audiobooks/?id={$audiobookId}&extended=1&format=json";
-
-            $response = $this->httpClient->request('GET', $url);
-
-            if ($response->getStatusCode() !== 200) {
-                throw new \Exception('Erreur lors de la récupération des données Genres depuis Librivox.');
-            }
-
-            $data = json_decode($response->getContent(), true);
-
-            if (!isset($data['books'][0])) {
-                throw new \Exception('Aucun livre trouvé pour cet ID.');
-            }
-
-            $book = $data['books'][0];
-
-            $genres = [];
-
-            if (isset($book['genres']) && is_array($book['genres'])) {
-                foreach ($book['genres'] as $genre) {
-                    $genres[] = [
-                        'id' => $genre['id'] ?? null,
-                        'name' => $genre['name'] ?? null,
-                    ];
-                }
-            }
-
-            return $genres;
-        } catch (\Exception $e) {
-            return ['error' => $e->getMessage()];
-        }
-    }
     
 }
