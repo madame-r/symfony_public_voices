@@ -28,12 +28,19 @@ async function displayBooks(books) {
             author.textContent = `Par : ${book.author}`;
             li.appendChild(author);
 
+
+            const link = document.createElement("a");
+            link.href = `/player/${Number(book.id)}`;
+
             const img = document.createElement("img");
             img.src = book.cover;
             img.alt = `Couverture de ${book.title}`;
-            li.appendChild(img);
+            link.appendChild(img)
+            li.appendChild(link);
 
             booksList.appendChild(li);
+
+
         });
     } catch (error) {
         console.error("Erreur lors de l'affichage des livres:", error);

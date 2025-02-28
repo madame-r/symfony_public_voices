@@ -8,11 +8,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class PlayerController extends AbstractController
 {
-    #[Route('/player', name: 'app_player')]
-    public function index(): Response
+    #[Route('/player/{bookId}', name: 'app_player', methods: ['GET'])]
+    public function index(int $bookId): Response
     {
+
+        
         return $this->render('player/index.html.twig', [
-            'controller_name' => 'PlayerController',
+            'bookId' => $bookId,
         ]);
     }
 }

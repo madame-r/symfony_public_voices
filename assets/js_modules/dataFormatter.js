@@ -27,7 +27,12 @@ function formatBooksData(books, coverArtsArray) {
             console.log(`Aucune couverture trouvée pour le livre ${book.title} (ID: ${book.id})`);
         }
 
+        const bookId = Number(book.id);
+        console.log(`Type de bookId après conversion: ${typeof bookId}`);
+
+
         return {
+            id: bookId,
             title: book.title || "Titre inconnu",
             author: authorName,
             cover: coverArt ? coverArt.coverart_thumbnail : "default_cover.jpg",
