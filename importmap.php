@@ -16,8 +16,12 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-    'script_api' => [
-        'path' => './assets/script_api.js',
+    'script_home' => [
+        'path' => './assets/script_home.js',
+        'entrypoint' => true,
+    ],
+    'script_player' => [
+        'path' => './assets/script_player.js',
         'entrypoint' => true,
     ],
     '@hotwired/stimulus' => [

@@ -1,5 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'player/base.html.twig' %}
 
+{% block javascripts %}
+{% block importmap %}
+{{ importmap('script_player') }}
+{% endblock %}
+{% endblock %}
 
 
 {% block body %}
