@@ -20,14 +20,6 @@ async function displayBooks(books) {
 
             const li = document.createElement("li");
 
-            const title = document.createElement("h3");
-            title.textContent = book.title;
-            li.appendChild(title);
-
-            const author = document.createElement("p");
-            author.textContent = `Par : ${book.author}`;
-            li.appendChild(author);
-
 
             const link = document.createElement("a");
             link.href = `/player/${Number(book.id)}`;
@@ -37,6 +29,16 @@ async function displayBooks(books) {
             img.alt = `Couverture de ${book.title}`;
             link.appendChild(img)
             li.appendChild(link);
+
+
+            const title = document.createElement("h3");
+            title.textContent = book.title;
+            li.appendChild(title);
+
+            const author = document.createElement("p");
+            author.textContent = `Par : ${book.author}`;
+            li.appendChild(author);
+
 
             booksList.appendChild(li);
 

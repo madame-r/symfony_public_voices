@@ -35,3 +35,37 @@
 #login i {
     font-size: 50px;
 }
+
+
+
+
+/* Catalog */
+
+.block {
+    height: 5vh;
+}
+
+#books-list {
+    width: 90vw;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#books-list li {
+    width: 90%;
+    justify-self: center;
+    margin: 20px 0;
+}
+
+#books-list li h3 {
+    font-size: 28px;
+}
+
+#books-list li p {
+    font-size: 23px;
+}
+
+#books-list li img {
+    border-radius: 20px;
+}
