@@ -53,6 +53,7 @@ async function displayBooks(books) {
 
 async function displayPlayer(playerData) {
     try {
+
         console.log("Affichage des données du player :", playerData);
 
         const playerContainer = document.getElementById("player-container");
@@ -132,4 +133,4 @@ async function displayPlayer(playerData) {
 
 
 
-export { displayBooks, displayPlayer };
+export { displayBooks };

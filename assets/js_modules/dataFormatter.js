@@ -44,18 +44,18 @@ function formatBooksData(books, coverArtsArray) {
 
 
 function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
-    console.log("Données des livres :", books);
-    console.log("Données des couvertures :", coverArtsArray);
-    console.log("Données des pistes audio :", audioTracksArray);
+    // console.log("Données des livres :", books);
+    // console.log("Données des couvertures :", coverArtsArray);
+    // console.log("Données des pistes audio :", audioTracksArray);
 
     const coverArts = coverArtsArray.books || [];
-    console.log("CoverArts traités :", coverArts);
+    // console.log("CoverArts traités :", coverArts);
 
     const audioTracks = audioTracksArray || [];
-    console.log("AudioTracks traités :", audioTracks);
+    // console.log("AudioTracks traités :", audioTracks);
 
     const booksArray = books.books.book || [];
-    console.log("BooksArray traités :", booksArray);
+    // console.log("BooksArray traités :", booksArray);
 
     const book = booksArray.find(book => Number(book.id) === bookId);
     if (!book) {
@@ -72,10 +72,10 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
     }
 
     const coverArt = coverArts.find(cover => String(cover.id) === String(book.id));
-    console.log(`Livre ID ${book.id} - CoverArt trouvé :`, coverArt);
+    // console.log(`Livre ID ${book.id} - CoverArt trouvé :`, coverArt);
 
     const audioTracksForBook = audioTracks;
-    console.log("Données pour audioTracksForBook :", audioTracksForBook);
+    // console.log("Données pour audioTracksForBook :", audioTracksForBook);
 
     const formattedBook = {
         id: bookId,
@@ -93,7 +93,7 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
         }))
     };
 
-    console.log("Livre formaté :", formattedBook);
+    // console.log("Livre formaté :", formattedBook);
     return formattedBook;
 }
 
