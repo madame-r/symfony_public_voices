@@ -9,7 +9,7 @@ A web application made with Symfony, that provides access to audiobooks from the
 - Catalog Display
 - Audiobook Player
 - User Account
-- Admin Dashboard
+
 
 
 ## 🧰 Tool Box for this project

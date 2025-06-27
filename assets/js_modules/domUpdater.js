@@ -36,7 +36,7 @@ async function displayBooks(books) {
             li.appendChild(title);
 
             const author = document.createElement("p");
-            author.textContent = `Par : ${book.author}`;
+            author.textContent = `${book.author}`;
             li.appendChild(author);
 
 
@@ -50,7 +50,7 @@ async function displayBooks(books) {
 }
 
 
-
+/* 
 async function displayPlayer(playerData) {
     try {
 
@@ -130,7 +130,7 @@ async function displayPlayer(playerData) {
     }
 }
 
-
+ */
 
 
 export { displayBooks };

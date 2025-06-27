@@ -85,8 +85,9 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 100%;
-    padding: 0 10px;
+    padding: 0 30px;
     background-color: rgb(0, 0, 0, 0.5);
+    font-size: 30px;
 }
 
 
@@ -111,7 +112,7 @@ audio {
 }
 
 #progress {
-    height: 1px;
+    height: 5px;
     background-color: white;
 }
 
@@ -126,13 +127,13 @@ audio {
 
 
 #play-pause-button i {
-    font-size: 40px;
+    font-size: 60px;
     color: white;
 }
 
 #prev-button i,
 #next-button i {
-    font-size: 30px;
+    font-size: 40px;
     color: white;
 }
 
@@ -146,7 +147,7 @@ audio {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #play-pause-button {
@@ -166,10 +167,13 @@ audio {
     color: black;
     padding-top: 20px;
     font-family: "Stanley";
+    font-size: 60px;
+    letter-spacing: 5px;
 }
 
 .on-the-right ul {
     padding-top: 20px;
+    font-size: 30px;
 }
 
 .chapters-list li {
