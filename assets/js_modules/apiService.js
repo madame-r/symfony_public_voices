@@ -24,8 +24,9 @@ async function fetchData(endpoint) {
 
 
 
-async function fetchBooks() {
-    return await fetchData("books");
+async function fetchBooks(limit = 6, offset = 0) {
+    const endpoint = `books?limit=${limit}&offset=${offset}`;
+    return await fetchData(endpoint);
 }
 
 async function fetchCoverArts(audiobookId) {
