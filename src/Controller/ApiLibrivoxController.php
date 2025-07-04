@@ -8,6 +8,7 @@ use App\Service\ApiLibrivoxService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -28,13 +29,15 @@ final class ApiLibrivoxController extends AbstractController
 
 
     #[Route('api/librivox/books', name: 'get_books', methods: ['GET'])]
-    public function getBooks(): JsonResponse
+    public function getBooks(Request $request): JsonResponse
     {
+        // Récupérer les paramètres limit et offset depuis la requête GET (valeurs par défaut)
+        $limit = (int) $request->query->get('limit', 6);
+        $offset = (int) $request->query->get('offset', 0);
 
-        $data = $this->apiLibrivoxService->fetchBooks();
+        $data = $this->apiLibrivoxService->fetchBooks($limit, $offset);
         return $this->json($data);
     }
-
 
 
     #[Route('api/librivox/{audiobookId}/coverarts', name: 'get_coverart', methods: ['GET'])]

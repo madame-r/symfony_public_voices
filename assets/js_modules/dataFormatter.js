@@ -7,11 +7,10 @@ function formatBooksData(books, coverArtsArray) {
 
     return books.map(book => {
         let authorName = "Auteur inconnu";
-        if (book.authors && book.authors.author) {
-            const authorData = Array.isArray(book.authors.author) ? book.authors.author[0] : book.authors.author;
-            if (authorData) {
-                authorName = `${authorData.first_name || ''} ${authorData.last_name || ''}`.trim();
-            }
+        
+        if (book.authors && Array.isArray(book.authors) && book.authors.length > 0) {
+            const authorData = book.authors[0];
+            authorName = `${authorData.first_name || ''} ${authorData.last_name || ''}`.trim();
         }
 
         console.log(`Livre: ${book.title}, Auteur: ${authorName}, ID: ${book.id}`);
@@ -30,7 +29,6 @@ function formatBooksData(books, coverArtsArray) {
         const bookId = Number(book.id);
         console.log(`Type de bookId après conversion: ${typeof bookId}`);
 
-
         return {
             id: bookId,
             title: book.title || "Titre inconnu",
@@ -39,9 +37,6 @@ function formatBooksData(books, coverArtsArray) {
         };
     });
 }
-
-
-
 
 function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
     // console.log("Données des livres :", books);
@@ -54,7 +49,7 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
     const audioTracks = audioTracksArray || [];
     // console.log("AudioTracks traités :", audioTracks);
 
-    const booksArray = books.books.book || [];
+    const booksArray = books.books || [];
     // console.log("BooksArray traités :", booksArray);
 
     const book = booksArray.find(book => Number(book.id) === bookId);
@@ -64,11 +59,10 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
     }
 
     let authorName = "Auteur inconnu";
-    if (book.authors && book.authors.author) {
-        const authorData = Array.isArray(book.authors.author) ? book.authors.author[0] : book.authors.author;
-        if (authorData) {
-            authorName = `${authorData.first_name || ''} ${authorData.last_name || ''}`.trim();
-        }
+    // Correction ici aussi, si la structure est similaire
+    if (book.authors && Array.isArray(book.authors) && book.authors.length > 0) {
+        const authorData = book.authors[0];
+        authorName = `${authorData.first_name || ''} ${authorData.last_name || ''}`.trim();
     }
 
     const coverArt = coverArts.find(cover => String(cover.id) === String(book.id));
@@ -96,6 +90,5 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
     // console.log("Livre formaté :", formattedBook);
     return formattedBook;
 }
-
 
 export { formatBooksData, formatPlayerData };

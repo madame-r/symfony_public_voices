@@ -18,30 +18,23 @@ class ApiLibrivoxService
 
 
 
-    public function fetchBooks(): array
+    public function fetchBooks(int $limit = 6, int $offset = 0): array
     {
         try {
+            // Construire l'URL avec format JSON, limit et offset
+            $url = "https://librivox.org/api/feed/audiobooks?format=json&limit={$limit}&offset={$offset}";
 
-            $response = $this->httpClient->request('GET', 'https://librivox.org/api/feed/audiobooks');
+            $response = $this->httpClient->request('GET', $url);
 
             if ($response->getStatusCode() !== 200) {
                 throw new \Exception('Erreur lors de la récupération des données depuis l\'API Librivox.');
             }
 
-
-            $xmlContent = $response->getContent();
-            $xml = simplexml_load_string($xmlContent);
-            $json = json_encode($xml);
-            $data = json_decode($json, true);
-
-            // dd($data);
+            $data = json_decode($response->getContent(), true);
 
             return $data;
 
-
-
         } catch (\Exception $e) {
-
             return ['error' => $e->getMessage()];
         }
     }

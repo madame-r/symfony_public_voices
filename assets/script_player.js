@@ -19,6 +19,9 @@ async function loadPlayerData(audiobookId) {
     try {
 
         const books = await fetchBooks();
+
+        console.log("books reçus côté player :", books);
+
         const coverArts = await fetchCoverArts(audiobookId);
         const audioTracks = await fetchAudioTracks(audiobookId);
 
@@ -29,11 +32,11 @@ async function loadPlayerData(audiobookId) {
         if (formattedData) {
             console.log("Test de la condition if avec formattedData :", true);
             console.log("Ajout de l'écouteur DOMContentLoaded");
-        
+
             if (document.readyState === "loading") {
 
                 // Le DOM n'est pas encore chargé, on écoute l'événement
-                
+
                 document.addEventListener("DOMContentLoaded", () => {
                     console.log("L'événement DOMContentLoaded s'est déclenché !");
                     console.log("Données formatées pour initAudiobookCover :", formattedData);
@@ -49,12 +52,12 @@ async function loadPlayerData(audiobookId) {
                 playerProgressBar();
             }
         }
-        
+
     } catch (error) {
         console.error("Erreur lors du chargement des données du player:", error);
     }
 
-    
+
 }
 
 loadPlayerData(audiobookId);
