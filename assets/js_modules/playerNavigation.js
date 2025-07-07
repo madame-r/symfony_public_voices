@@ -23,9 +23,22 @@ const playerNavigation = (audioTracks) => {
 
             // Attendre que les métadonnées audio soient chargées avant de configurer la lecture
             audioPlayer.addEventListener('loadedmetadata', () => {
+
                 console.log("🎧 Métadonnées chargées pour le chapitre :", currentChapterIndex);
+
                 playPauseButton.innerHTML = '<i class="bi bi-pause-circle"></i>';
+
+
+                audioPlayer.play()
+                    .then(() => {
+                        console.log("▶️ Lecture automatique démarrée.");
+                    })
+                    .catch((error) => {
+                        console.error("⚠️ Échec de la lecture automatique :", error);
+                    });
+
             }, { once: true });
+
         } else {
             console.error("⚠️ L'URL de l'audio est undefined ou invalide.");
         }

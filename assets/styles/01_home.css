@@ -17,7 +17,7 @@
 
 #logo-black p {
     font-family: "Stanley";
-    font-size: 70px;
+    font-size: 30px;
 }
 
 #register-login {
@@ -25,15 +25,15 @@
 }
 
 #register {
-    font-size: 35px;
+    font-size: 15px;
 }
 
 #login {
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 #login i {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 
@@ -60,11 +60,11 @@
 }
 
 #books-list li h3 {
-    font-size: 28px;
+    font-size: 17px;
 }
 
 #books-list li p {
-    font-size: 23px;
+    font-size: 15px;
 }
 
 #books-list li img {
