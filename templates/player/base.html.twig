@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Public Voices</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="{{ asset('styles/app.css') }}" />
-        <link rel="stylesheet" href="{{ asset('styles/02_player.css') }}" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Voices</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('styles/02_player.css') }}" />
 
 
 
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
+    {% block javascripts %}
+    {% endblock %}
+</head>
 
-        <nav id="nav-top">
+<body>
 
-            <a href="{{path('app_home')}}"  id="xmark"><i class="bi bi-x"></i></a>
-        
-            <div id="favorite-login">
-                <div id="favorite"><i class="bi bi-heart"></i></div>
-                <div id="login"><i class="bi bi-person-circle"></i></div>
-            </div>
-        
-        </nav>
+    <nav id="nav-top">
+
+        <a href="{{path('app_home')}}" id="xmark"><i class="bi bi-x"></i></a>
+
+        <div id="favorite-login">
+            <div id="favorite"><i class="bi bi-heart"></i></div>
+            <div id="login"><i class="bi bi-person-circle"></i></div>
+        </div>
+
+    </nav>
 
 
-        {% block body %}{% endblock %}
-    </body>
+    {% block body %}{% endblock %}
+</body>
+
 </html>
