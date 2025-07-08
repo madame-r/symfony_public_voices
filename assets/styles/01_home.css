@@ -1,5 +1,3 @@
-
-
 /*  BODY ******************************************************* */
 
 
@@ -10,30 +8,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: 15px 30px;
     border-bottom: 1px solid rgb(194, 194, 194);
 }
 
 
 #logo-black p {
     font-family: "Stanley";
-    font-size: 30px;
+    font-size: 35px;
 }
 
-#register-login {
-    display: flex;
-}
 
-#register {
-    font-size: 15px;
-}
-
-#login {
-    margin-left: 20px;
-}
 
 #login i {
-    font-size: 30px;
+    font-size: 33px;
 }
 
 
@@ -69,4 +57,37 @@
 
 #books-list li img {
     border-radius: 20px;
+}
+
+
+
+
+
+/* MEDIA QUERIES ******************************************************* */
+
+@media screen and (min-width:1024px) {
+
+    /*  BODY ******************************************************* */
+
+
+    /* Nav */
+
+
+    #nav-top {
+        width: 50vw;
+        justify-self: center;
+    }
+
+    #logo-black p {
+        font-size: 40px;
+    }
+
+
+    /* Catalog */
+
+    #books-list {
+        width: 50vw;
+        grid-template-columns: 33% 33% 33%;
+    }
+
 }
