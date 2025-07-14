@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{ asset('styles/01_home.css') }}" />
 
 
+    {% block stylesheets %}
+    {% endblock %}
+
 
 
     {% block javascripts %}
@@ -22,12 +25,25 @@
     <nav id="nav-top">
 
         <div id="logo-black">
-            <p>Public Voices</p>
+            <a href="{{path('app_home')}}" id="logo-black">
+                Public Voices
+            </a>
         </div>
 
+
+        {% if app.user %}
         <div id="login">
-            <i class="bi bi-person-circle"></i>
+            <a href="{{ path('app_account') }}" id="user-account">
+                <i class="bi bi-person-fill-check"></i>
+            </a>
         </div>
+        {% else %}
+        <div id="login">
+            <a href="{{ path('app_login') }}" id="user-account">
+                <i class="bi bi-person-circle"></i>
+            </a>
+        </div>
+        {% endif %}
 
     </nav>
 

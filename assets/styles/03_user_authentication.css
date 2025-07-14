@@ -1,0 +1,89 @@
+.authentication-parent {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#login-form,
+.register-form {
+    width: 90%;
+}
+
+
+#login-form h1,
+.register-form h1 {
+
+    margin-bottom: 40px;
+}
+
+#login-form input,
+.register-form input {
+    height: 5vh;
+    font-size: 15px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+
+#reset-password a,
+.signup-link a {
+    text-decoration: none;
+    color: black;
+}
+
+#reset-password a:hover,
+.signup-link a:hover {
+    cursor: pointer;
+    color: #ffb700;
+}
+
+
+.agree-terms {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+#login-form button {
+    margin: 40px 0;
+    background-color: black;
+    color: white;
+    border: 0;
+    height: 7vh;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+
+#login-form button:hover {
+    cursor: pointer;
+    background-color: #ffb700;
+    color: black;
+}
+
+.signup-link {
+    text-align: center;
+}
+
+.signup-link a {
+    font-weight: 700;
+}
+
+/* MEDIA QUERIES ******************************************************* */
+
+@media screen and (min-width:1024px) {
+
+
+    .authentication-parent {
+        margin-top: 60px;
+    }
+
+    #login-form,
+    .register-form {
+        width: 30vw;
+    }
+}

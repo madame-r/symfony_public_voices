@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('styles/03_user_authentication.css') }}" />
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="authentication-parent">
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm, {
+    attr: { class: 'register-form' }
+    }) }}
+
+    <h1>Sign Up</h1>
+
+    {{ form_row(registrationForm.username) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.plainPassword) }}
+    {{ form_row(registrationForm.confirmPassword) }}
+    {{ form_row(registrationForm.agreeTerms) }}
+
+    
+
+    <button type="submit" class="btn">Sign Up</button>
+    {{ form_end(registrationForm) }}
+
+</div>
+
+
+
+{% endblock %}

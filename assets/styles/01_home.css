@@ -13,11 +13,22 @@
 }
 
 
-#logo-black p {
+#logo-black {
     font-family: "Stanley";
     font-size: 35px;
 }
 
+#logo-black a,
+#login a {
+    color: black;
+    text-decoration: none;
+}
+
+#logo-black a:hover,
+#login a:hover {
+    cursor: pointer;
+    color: #ffb700;
+}
 
 
 #login i {
