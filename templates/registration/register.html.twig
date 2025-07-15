@@ -24,11 +24,18 @@
     {{ form_row(registrationForm.email) }}
     {{ form_row(registrationForm.plainPassword) }}
     {{ form_row(registrationForm.confirmPassword) }}
-    {{ form_row(registrationForm.agreeTerms) }}
 
-    
+
+
+
+    <div id="agree-terms">
+        {{ form_label(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.agreeTerms) }}
+    </div>
+
 
     <button type="submit" class="btn">Sign Up</button>
+
     {{ form_end(registrationForm) }}
 
 </div>
