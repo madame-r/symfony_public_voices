@@ -38,16 +38,24 @@
 }
 
 
-.agree-terms {
-    display: flex;
-    align-items: center;
+#agree-terms {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100%;
+    width: 70%;
+}
+
+
+
+#agree-terms input {
+    height: 3vh;
 }
 
 
 
 
-
-#login-form button {
+#login-form button,
+.register-form button {
     margin: 40px 0;
     background-color: black;
     color: white;
@@ -59,7 +67,8 @@
 }
 
 
-#login-form button:hover {
+#login-form button:hover,
+.register-form button:hover {
     cursor: pointer;
     background-color: #ffb700;
     color: black;
@@ -86,4 +95,8 @@
     .register-form {
         width: 30vw;
     }
+
+    #agree-terms {
+    width: 60%;
+}
 }
