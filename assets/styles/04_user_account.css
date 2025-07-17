@@ -1,0 +1,128 @@
+.user-account-parent {
+    min-height: 90vh;
+}
+
+.block10 {
+    height: 10vh;
+}
+
+
+
+.main-user-account {
+    width: 90vw;
+    justify-self: center;
+    color: black;
+    margin-bottom: 20px;
+
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+}
+
+
+.breadcrumb a:hover {
+    cursor: pointer;
+    color: #ffb700;
+}
+
+h1 {
+
+    margin: 40px 0;
+    font-size: 30px;
+}
+
+
+/* Profile Index */
+
+
+.account-menu {
+    color: black;
+}
+
+.account-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    padding: 10px;
+    border: black 1px solid;
+    margin: 20px 0;
+}
+
+
+.submenu:hover {
+    background-color: #ffb700;
+    border: #ffb700 1px solid;
+    color: white;
+}
+
+
+
+
+.logout {
+    height: 5vh;
+    margin: 40px 0;
+    background-color: #ffb700;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logout:hover {
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ffb700;
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.logout a:hover {
+
+    color: #ffb700;
+}
+
+
+.logout a div {
+    margin-right: 10px;
+}
+
+
+.logout a div i {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+/* MEDIA QUERIES ******************************************************* */
+
+@media screen and (min-width:600px) {}
+
+@media screen and (min-width:1024px) {
+
+
+
+
+    .main-user-account {
+        width: 30vw;
+        justify-self: center;
+    }
+
+
+    .breadcrumb {
+        margin-top: 20px;
+    }
+}
