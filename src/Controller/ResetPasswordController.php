@@ -68,10 +68,14 @@ final class ResetPasswordController extends AbstractController
                 $mailer->send($emailMessage);
             }
 
-            // Message flash optionnel
-            $this->addFlash('success', 'Si un compte correspond à cet email, un lien de réinitialisation vous a été envoyé.');
+            if ($user) {
+                $this->addFlash('success', 'A reset link has been sent to you.');
+            } else {
+                $this->addFlash('danger', 'This account doesn\'t exist');
+            }
 
-            return $this->redirectToRoute('app_check_email');
+
+            return $this->redirectToRoute('app_forgot_password_request');
         }
 
 
@@ -97,7 +101,7 @@ final class ResetPasswordController extends AbstractController
 
         if (!$user || $user->getResetTokenExpiredAt() < new \DateTimeImmutable()) {
 
-            $this->addFlash('danger', 'Le lien de réinitialisation est invalide ou expiré.');
+            $this->addFlash('danger', 'The reset link is invalid or expired.');
 
             return $this->redirectToRoute('app_forgot_password_request');
         }
@@ -111,7 +115,7 @@ final class ResetPasswordController extends AbstractController
             $data = $form->getData();
 
             if ($data['newPassword'] !== $data['confirmPassword']) {
-                $this->addFlash('danger', 'Les mots de passe ne correspondent pas.');
+                $this->addFlash('danger', 'The passwords do not match.');
                 return $this->redirectToRoute('app_reset_password_token', ['token' => $token]);
             } else {
 
@@ -125,22 +129,13 @@ final class ResetPasswordController extends AbstractController
 
                 $em->refresh($user);
 
-                $this->addFlash('success', 'Votre mot de passe a bien été réinitialisé.');
-                return $this->redirectToRoute('app_login');
-                
+                $this->addFlash('success', 'Your password has been reset successfully.');
+
             }
         }
 
         return $this->render('reset_password/reset.html.twig', [
             'resetForm' => $form->createView(),
         ]);
-    }
-
-
-
-    #[Route('/reset/password/check-email', name: 'app_check_email')]
-    public function checkEmail(): Response
-    {
-        return $this->render('reset_password/check_email.html.twig');
     }
 }

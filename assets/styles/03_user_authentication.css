@@ -1,3 +1,7 @@
+/* LOGIN - REGISTER - RESET PASSWORD */
+
+
+
 .authentication-parent {
     display: flex;
     justify-content: center;
@@ -5,19 +9,25 @@
 }
 
 #login-form,
-.register-form {
+.register-form,
+.request-form,
+.reset-form {
     width: 90%;
 }
 
 
 #login-form h1,
-.register-form h1 {
+.register-form h1,
+.request-form h1,
+.reset-form h1 {
 
     margin-bottom: 40px;
 }
 
 #login-form input,
-.register-form input {
+.register-form input,
+.request-form input,
+.reset-form input {
     height: 5vh;
     font-size: 15px;
     padding-left: 10px;
@@ -55,7 +65,9 @@
 
 
 #login-form button,
-.register-form button {
+.register-form button,
+.request-form button,
+.reset-form button {
     margin: 40px 0;
     background-color: black;
     color: white;
@@ -68,7 +80,9 @@
 
 
 #login-form button:hover,
-.register-form button:hover {
+.register-form button:hover,
+.request-form button:hover,
+.reset-form button:hover {
     cursor: pointer;
     background-color: #ffb700;
     color: black;
@@ -82,6 +96,29 @@
     font-weight: 700;
 }
 
+
+
+/* RESET PASSWORD - REQUEST ALERTS */
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
 /* MEDIA QUERIES ******************************************************* */
 
 @media screen and (min-width:1024px) {
@@ -92,7 +129,9 @@
     }
 
     #login-form,
-    .register-form {
+    .register-form,
+    .request-form,
+    .reset-form {
         width: 30vw;
     }
 
