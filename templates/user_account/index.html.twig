@@ -1,20 +1,61 @@
 {% extends 'base.html.twig' %}
 
 
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('styles/04_user_account.css') }}" />
+
+{% endblock %}
+
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="user-account-parent">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/roger/Desktop/DEV_LOCAL/03_SYMFONY_PUBLIC_VOICES/public_voices/src/Controller/UserAccountController.php</code></li>
-        <li>Your template at <code>C:/Users/roger/Desktop/DEV_LOCAL/03_SYMFONY_PUBLIC_VOICES/public_voices/templates/user_account/index.html.twig</code></li>
-    </ul>
+    <main class="main-user-account">
+
+        <div class="block10"></div>
+
+        <div class="breadcrumb"><a href="{{ path('app_home')}}">Back to the catalogue</a></div>
+
+
+
+        <div class="account-menu">
+
+            <h1>Hi {{ app.user.username }}</h1>
+
+            <a href="#">
+                <div class="submenu">
+                    <p>Favorite Audiobooks</p>
+                    <div><i class="bi bi-caret-right-fill"></i></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="submenu">
+                    <p>Personal Informations</p>
+                    <div><i class="bi bi-caret-right-fill"></i></div>
+                </div>
+            </a>
+
+        </div>
+
+
+        <div class="logout">
+            <a href="{{ path('app_logout') }}">
+                <div><i class="bi bi-power"></i></div>
+                <p>Log Out</p>
+            </a>
+
+        </div>
+
+
+
+    </main>
+
 </div>
+
+
+
 {% endblock %}
