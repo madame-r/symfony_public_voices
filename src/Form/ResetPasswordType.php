@@ -15,13 +15,13 @@ class ResetPasswordType extends AbstractType
     {
         $builder
             ->add('newPassword', PasswordType::class, [
-                'label' => 'Nouveau mot de passe',
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => false,
+                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'New password'],
                 'required' => true,
             ])
             ->add('confirmPassword', PasswordType::class, [
-                'label' => 'Confirmez le mot de passe',
-                'attr' => ['autocomplete' => 'new-password'],
+                'label' => false,
+                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Confirm password'],
                 'required' => true,
             ]);
     }

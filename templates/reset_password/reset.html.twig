@@ -1,25 +1,41 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('styles/03_user_authentication.css') }}" />
+
+{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1>Réinitialisez votre mot de passe</h1>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }}">{{ message }}</div>
-            {% endfor %}
-        {% endfor %}
+<div class="authentication-parent">
 
-        {{ form_start(resetForm) }}
-            <div class="mb-3">
-                {{ form_row(resetForm.newPassword) }}
-            </div>
-            <div class="mb-3">
-                {{ form_row(resetForm.confirmPassword) }}
-            </div>
 
-            <button type="submit" class="btn btn-primary">Réinitialiser le mot de passe</button>
-        {{ form_end(resetForm) }}
-    </div>
+    {% for label, messages in app.flashes %}
+    {% for message in messages %}
+    <div class="alert alert-{{ label }}">{{ message }}</div>
+    {% endfor %}
+    {% endfor %}
+
+
+    {{ form_start(resetForm, {
+    attr: { class: 'reset-form' }
+    }) }}
+
+
+    <h1>Reset your password</h1>
+
+
+        {{ form_row(resetForm.newPassword) }}
+
+        {{ form_row(resetForm.confirmPassword) }}
+
+
+    <button type="submit" class="btn btn-primary">Reset</button>
+    {{ form_end(resetForm) }}
+
+
+</div>
+
+
 {% endblock %}
