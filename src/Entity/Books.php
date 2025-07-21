@@ -32,7 +32,7 @@ class Books
     private ?string $url_zip_file = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $cover_image_ur = null;
+    private ?string $cover_image_url = null;
 
     #[ORM\Column(length: 255)]
     private ?string $cover_thumbnail_url = null;
@@ -64,12 +64,16 @@ class Books
     #[ORM\ManyToOne(inversedBy: 'books')]
     private ?Languages $languages = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
+
     public function __construct()
     {
         $this->favorites = new ArrayCollection();
         $this->bookmarks = new ArrayCollection();
         $this->authors = new ArrayCollection();
         $this->genres = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -137,14 +141,14 @@ class Books
         return $this;
     }
 
-    public function getCoverImageUr(): ?string
+    public function getCoverImageUrl(): ?string
     {
-        return $this->cover_image_ur;
+        return $this->cover_image_url;
     }
 
-    public function setCoverImageUr(string $cover_image_ur): static
+    public function setCoverImageUrl(string $cover_image_url): static
     {
-        $this->cover_image_ur = $cover_image_ur;
+        $this->cover_image_url = $cover_image_url;
 
         return $this;
     }
@@ -277,6 +281,18 @@ class Books
     public function setLanguages(?Languages $languages): static
     {
         $this->languages = $languages;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
