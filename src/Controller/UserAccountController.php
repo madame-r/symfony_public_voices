@@ -19,4 +19,12 @@ final class UserAccountController extends AbstractController
             'controller_name' => 'UserAccountController',
         ]);
     }
+
+
+    #[Route('/user-account/favorites', name: 'app_user_account_favorites')]
+    #[IsGranted('ROLE_USER')]
+    public function favorites(): Response
+    {
+        return $this->render('user_account/favorites.html.twig');
+    }
 }
