@@ -135,7 +135,18 @@ final class ApiUserAccountController extends AbstractController
         $data = [];
 
         foreach ($favorites as $favorite) {
+
             $book = $favorite->getBooks();
+
+            $authorsData = [];
+            foreach ($book->getAuthors() as $author) {
+                $authorsData[] = [
+                    'first_name' => $author->getFirstName(),
+                    'last_name' => $author->getLastName(),
+                ];
+            }
+
+
             $data[] = [
                 'id' => $book->getId(),
                 'librivox_book_id' => $book->getLibrivoxBookId(),
@@ -144,6 +155,7 @@ final class ApiUserAccountController extends AbstractController
                 'cover_image_url' => $book->getCoverImageUrl(),
                 'cover_thumbnail_url' => $book->getCoverThumbnailUrl(),
                 'total_time_seconds' => $book->getTotalTimeSeconds(),
+                'authors' => $authorsData,
             ];
         }
 
