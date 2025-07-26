@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
-final class ApiJWTController extends AbstractController
+final class ApiUserAccountController extends AbstractController
 {
 
     #[Route('/api/favorites', name: 'api_favorites', methods: ['POST'])]
