@@ -1,4 +1,4 @@
-import { displayFavorites } from "./js_modules/displayFavorites.js";
+import { initFavorites } from "./js_modules/displayFavorites.js";
 
 
-displayFavorites();
+initFavorites();

@@ -19,7 +19,10 @@
     display: flex;
 }
 
-
+#favorite i:hover {
+    color: #ffd700;
+    cursor: pointer;
+}
 
 #login {
     margin-left: 40px;
