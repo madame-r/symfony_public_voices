@@ -8,7 +8,8 @@
 
 
 
-.main-user-account {
+.main-user-account,
+.main-user-favorites {
     width: 90vw;
     justify-self: center;
     color: black;
@@ -35,7 +36,7 @@ h1 {
 }
 
 
-/* Profile Index */
+/* USER ACCOUNT : DASHBOARD */
 
 
 .account-menu {
@@ -106,6 +107,46 @@ h1 {
 }
 
 
+/* FAVORITES */
+
+
+.favorite-item {
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.favorite-item .fav-01 {
+    width: 30%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.favorite-item .fav-01 img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.favorite-item .fav-02 {
+    font-size: 13px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.favorite-item .fav-03 {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
 
 /* MEDIA QUERIES ******************************************************* */
 
@@ -116,13 +157,25 @@ h1 {
 
 
 
-    .main-user-account {
-        width: 30vw;
-        justify-self: center;
+    .main-user-favorites {
+        width: 50vw;
     }
 
 
     .breadcrumb {
         margin-top: 20px;
     }
+
+    /* FAVORITES */
+
+    .favorite-item .fav-01 {
+        width: 20%;
+    }
+
+    .favorite-item .fav-02 {
+        width: 60%;
+        padding: 40px;
+    }
+
+
 }

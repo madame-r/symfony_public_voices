@@ -24,7 +24,23 @@
 
         <div id="favorite-login">
             <div id="favorite"><i class="bi bi-heart"></i></div>
-            <div id="login"><i class="bi bi-person-circle"></i></div>
+
+
+            {% if app.user %}
+            <div id="login">
+                <a href="{{ path('app_user_account') }}" id="user-account">
+                    <i class="bi bi-person-fill-check"></i>
+                </a>
+            </div>
+            {% else %}
+            <div id="login">
+                <a href="{{ path('app_login') }}" id="user-account">
+                    <i class="bi bi-person-circle"></i>
+                </a>
+            </div>
+            {% endif %}
+
+
         </div>
 
     </nav>
