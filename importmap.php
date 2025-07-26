@@ -24,6 +24,10 @@ return [
         'path' => './assets/script_player.js',
         'entrypoint' => true,
     ],
+        'script_user_account' => [
+        'path' => './assets/script_user_account.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

@@ -1,4 +1,7 @@
 
+/* API LIBRIVOX ******************************************** */
+
+
 const BASE_URL = "/api/librivox/";
 
 async function fetchData(endpoint) {
@@ -42,4 +45,28 @@ async function fetchAudioTracks(audiobookId) {
 }
 
 
-export {fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks };
+
+/* API USER ACCOUNT  ******************************************** */
+
+const USER_ACCOUNT_BASE_URL = "/api/";
+
+async function fetchFavorites() {
+    try {
+        const response = await fetch(`${USER_ACCOUNT_BASE_URL}favorites`, {
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Erreur lors de la récupération des favoris:", error);
+        return null;
+    }
+}
+
+
+
+export {fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks, fetchFavorites };
