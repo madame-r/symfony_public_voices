@@ -1,4 +1,3 @@
-
 import { fetchBooks, fetchCoverArts } from "./apiService.js";
 import { formatBooksData } from "./dataFormatter.js";
 import { displayBooks } from "./domUpdater.js";
@@ -7,20 +6,29 @@ const LIMIT = 6;
 let offset = 0;
 let loading = false;
 let allLoaded = false;
+let currentSearch = null;  // stocke la recherche en cours
 
+async function loadBooks(options = {}) {
 
-
-async function loadBooks() {
 
     if (loading || allLoaded) return;
     loading = true;
 
+    const { search = currentSearch, reset = false } = options;
+
+    if (reset) {
+        offset = 0;
+        allLoaded = false;
+        document.getElementById('books-list').innerHTML = '';
+    }
+
+    currentSearch = search;
 
     try {
 
-        const booksData = await fetchBooks(LIMIT, offset);
-        console.log("booksData reçu:", booksData);
-
+        console.log("Paramètres envoyés à fetchBooks:", LIMIT, offset, search);
+        const booksData = await fetchBooks(LIMIT, offset, search);
+        console.log("Réponse complète de l'API:", booksData);
 
         const booksArray = Array.isArray(booksData.books) ? booksData.books : [];
 
@@ -39,8 +47,8 @@ async function loadBooks() {
         // Formater les données
         const formattedBooks = formatBooksData(booksArray, coverArtsData);
 
-        // Ajouter les livres dans le DOM (append)
-        displayBooks(formattedBooks, true);
+        // Ajouter les livres dans le DOM (append ou nouveau contenu si reset)
+        displayBooks(formattedBooks, !reset);
 
         offset += LIMIT;
 
@@ -52,20 +60,18 @@ async function loadBooks() {
 }
 
 function handleScroll() {
-
     console.log("handleScroll déclenché");
 
     const scrollPosition = window.innerHeight + window.scrollY;
     const threshold = document.body.offsetHeight - 200;
 
     if (scrollPosition >= threshold) {
-        loadBooks();
+        loadBooks({ search: currentSearch });
     }
 }
 
 function setupLazyLoading() {
     window.addEventListener('scroll', handleScroll);
 }
-
 
 export { loadBooks, setupLazyLoading };

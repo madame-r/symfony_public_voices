@@ -18,26 +18,31 @@ class ApiLibrivoxService
 
 
 
-    public function fetchBooks(int $limit = 6, int $offset = 0): array
-    {
-        try {
-            // Construire l'URL avec format JSON, limit et offset
-            $url = "https://librivox.org/api/feed/audiobooks?format=json&limit={$limit}&offset={$offset}";
+public function fetchBooks(int $limit = 6, int $offset = 0, ?string $search = null): array
+{
+    try {
+        // Construire l'URL avec format JSON, limit et offset
+        $url = "https://librivox.org/api/feed/audiobooks?format=json&limit={$limit}&offset={$offset}";
 
-            $response = $this->httpClient->request('GET', $url);
-
-            if ($response->getStatusCode() !== 200) {
-                throw new \Exception('Erreur lors de la récupération des données depuis l\'API Librivox.');
-            }
-
-            $data = json_decode($response->getContent(), true);
-
-            return $data;
-
-        } catch (\Exception $e) {
-            return ['error' => $e->getMessage()];
+        if ($search) {
+            // Chercher uniquement par auteur
+            $url .= "&author=" . urlencode($search);
         }
+
+        $response = $this->httpClient->request('GET', $url);
+
+        if ($response->getStatusCode() !== 200) {
+            throw new \Exception('Erreur lors de la récupération des données depuis l\'API Librivox.');
+        }
+
+        $data = json_decode($response->getContent(), true);
+
+        return $data;
+
+    } catch (\Exception $e) {
+        return ['error' => $e->getMessage()];
     }
+}
 
 
     public function fetchCoverArts(int $audiobookId): array
@@ -59,8 +64,6 @@ class ApiLibrivoxService
             // dd($data);
 
             return $data;
-            
-
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
         }
@@ -143,7 +146,4 @@ class ApiLibrivoxService
             return ['error' => $e->getMessage()];
         }
     }
-
-
-    
 }
