@@ -27,10 +27,14 @@ async function fetchData(endpoint) {
 
 
 
-async function fetchBooks(limit = 6, offset = 0) {
-    const endpoint = `books?limit=${limit}&offset=${offset}`;
+async function fetchBooks(limit = 6, offset = 0, search = null) {
+    let endpoint = `books?limit=${limit}&offset=${offset}`;
+    if (search && search.trim() !== '') {
+        endpoint += `&search=${encodeURIComponent(search.trim())}`;
+    }
     return await fetchData(endpoint);
 }
+
 
 async function fetchCoverArts(audiobookId) {
     return await fetchData(`${audiobookId}/coverarts`);
@@ -69,4 +73,4 @@ async function fetchFavorites() {
 
 
 
-export {fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks, fetchFavorites };
+export { fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks, fetchFavorites };

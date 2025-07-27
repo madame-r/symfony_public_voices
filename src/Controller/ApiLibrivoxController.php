@@ -31,11 +31,14 @@ final class ApiLibrivoxController extends AbstractController
     #[Route('api/librivox/books', name: 'get_books', methods: ['GET'])]
     public function getBooks(Request $request): JsonResponse
     {
-        // Récupérer les paramètres limit et offset depuis la requête GET (valeurs par défaut)
+        // Récupérer les paramètres depuis la requête GET
         $limit = (int) $request->query->get('limit', 6);
         $offset = (int) $request->query->get('offset', 0);
 
-        $data = $this->apiLibrivoxService->fetchBooks($limit, $offset);
+        // Récupérer le terme de recherche (peut être un titre ou un auteur)
+        $search = $request->query->get('search');
+
+        $data = $this->apiLibrivoxService->fetchBooks($limit, $offset, $search);
         return $this->json($data);
     }
 
@@ -64,7 +67,4 @@ final class ApiLibrivoxController extends AbstractController
         $audiotracks = $this->apiLibrivoxService->fetchAudioTracks($audiobookId);
         return $this->json($audiotracks);
     }
-
-
-
 }

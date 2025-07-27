@@ -37,6 +37,40 @@
 
 
 
+/* Search Bar */
+
+
+
+.search-bar {
+    display: flex;
+    width: 90vw;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+
+.search-input {
+    width: 80%;
+}
+
+
+.search-input input {
+    height: 5vh;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.search-icon {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    border: 1px solid black;
+    border-left: 0;
+}
+
+
 
 /* Catalog */
 
@@ -92,6 +126,23 @@
     #logo-black p {
         font-size: 40px;
     }
+
+
+
+    /* Search Bar */
+
+    .search-bar {
+        width: 50vw;
+    }
+
+
+    .search-icon:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+
+
 
 
     /* Catalog */
