@@ -49,6 +49,11 @@ async function fetchAudioTracks(audiobookId) {
 }
 
 
+async function fetchBookById(id) {
+    return await fetchData(`books/${id}`);
+}
+
+
 
 /* API USER ACCOUNT  ******************************************** */
 
@@ -73,4 +78,4 @@ async function fetchFavorites() {
 
 
 
-export { fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks, fetchFavorites };
+export { fetchBooks, fetchCoverArts, fetchGenres, fetchAudioTracks, fetchBookById, fetchFavorites };

@@ -1,9 +1,12 @@
 function formatBooksData(books, coverArtsArray) {
+
     console.log("Données des livres :", books);
     console.log("Données des couvertures :", coverArtsArray);
 
     // Utiliser directement les données des couvertures
-    const coverArts = coverArtsArray.flatMap(coverArt => coverArt.books);
+    const coverArts = coverArtsArray
+        .filter(item => item && item.books && Array.isArray(item.books))
+        .flatMap(item => item.books);
 
     return books.map(book => {
         let authorName = "Auteur inconnu";
@@ -13,7 +16,7 @@ function formatBooksData(books, coverArtsArray) {
             authorName = `${authorData.first_name || ''} ${authorData.last_name || ''}`.trim();
         }
 
-        console.log(`Livre: ${book.title}, Auteur: ${authorName}, ID: ${book.id}`);
+        // console.log(`Livre: ${book.title}, Auteur: ${authorName}, ID: ${book.id}`);
 
         const coverArt = coverArts.find(cover => {
             console.log(`Comparaison des IDs de couverture: Livre ID ${book.id}, Couverture ID ${cover.id}`);
@@ -39,11 +42,12 @@ function formatBooksData(books, coverArtsArray) {
 }
 
 function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
-
     const coverArts = coverArtsArray.books || [];
     const audioTracks = audioTracksArray || [];
-    const booksArray = books.books || [];
 
+    const booksArray = Array.isArray(books) ? books
+        : books && books.books ? books.books
+        : [books];
 
     const book = booksArray.find(book => Number(book.id) === bookId);
     if (!book) {
@@ -63,11 +67,14 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
 
     const coverArt = coverArts.find(cover => String(cover.id) === String(book.id));
 
+    // 📌 Fallback si coverArt absent
+    const cover = coverArt?.coverart_jpg || book.cover || "default_cover.jpg";
+    const coverThumbnail = coverArt?.coverart_thumbnail || book.coverThumbnail || "default_cover_thumb.jpg";
+    const totalTime = coverArt?.totaltimesecs || 0;
+
     const audioTracksForBook = audioTracks
         .filter(track => typeof track.chapter_order !== "undefined")
         .sort((a, b) => a.chapter_order - b.chapter_order);
-
-
 
     const formattedBook = {
         id: bookId,
@@ -76,9 +83,9 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
         description: book.description || "",
         language: book.language || "unknown",
         urlTextSource: book.url_text_source || "",
-        cover: coverArt ? coverArt.coverart_jpg : "default_cover.jpg",
-        coverThumbnail: coverArt ? coverArt.coverart_thumbnail : "default_cover_thumb.jpg",
-        totalTime: coverArt ? coverArt.totaltimesecs : 0,
+        cover: cover,
+        coverThumbnail: coverThumbnail,
+        totalTime: totalTime,
         zipUrl: book.url_zip_file || "",
         audioTracks: audioTracksForBook.map(track => ({
             id: track.id,

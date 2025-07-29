@@ -67,4 +67,17 @@ final class ApiLibrivoxController extends AbstractController
         $audiotracks = $this->apiLibrivoxService->fetchAudioTracks($audiobookId);
         return $this->json($audiotracks);
     }
+
+
+    #[Route('api/librivox/books/{id}', name: 'get_book_by_id', methods: ['GET'])]
+    public function getBookById(int $id): JsonResponse
+    {
+        $book = $this->apiLibrivoxService->fetchBookById($id);
+
+        if (!$book) {
+            return $this->json(['error' => 'Livre non trouvé'], 404);
+        }
+
+        return $this->json($book);
+    }
 }

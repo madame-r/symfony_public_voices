@@ -1,5 +1,11 @@
-async function displayBooks(books, append = false) {
+// Gère le clic sur un livre
+function handleBookClick(book) {
+    sessionStorage.setItem("selectedBook", JSON.stringify(book));
+    window.location.href = `/player/${book.id}`;
+}
 
+// Affiche les livres dans la liste
+async function displayBooks(books, append = false) {
     try {
         console.log("Affichage des livres :", books);
 
@@ -10,23 +16,20 @@ async function displayBooks(books, append = false) {
         }
 
         if (!append) {
-            booksList.innerHTML = "";  // vide la liste uniquement si append = false
+            booksList.innerHTML = ""; // vide la liste uniquement si append = false
         }
 
-        // Afficher tous les livres reçus
         books.forEach(book => {
-            console.log("Affichage du livre :", book);
-
             const li = document.createElement("li");
-
-            const link = document.createElement("a");
-            link.href = `/player/${Number(book.id)}`;
+            li.style.cursor = "pointer";
 
             const img = document.createElement("img");
             img.src = book.cover;
             img.alt = `Couverture de ${book.title}`;
-            link.appendChild(img);
-            li.appendChild(link);
+            img.onerror = () => {
+                img.src = "/images/default_cover.jpg"; // adapte le chemin à ton projet
+            };
+            li.appendChild(img);
 
             const title = document.createElement("h3");
             title.textContent = book.title;
@@ -36,13 +39,14 @@ async function displayBooks(books, append = false) {
             author.textContent = `${book.author}`;
             li.appendChild(author);
 
+            li.addEventListener("click", () => handleBookClick(book));
+
             booksList.appendChild(li);
         });
-        
+
     } catch (error) {
         console.error("Erreur lors de l'affichage des livres:", error);
     }
 }
-
 
 export { displayBooks };

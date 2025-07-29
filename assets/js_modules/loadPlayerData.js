@@ -1,27 +1,44 @@
-import { fetchBooks, fetchCoverArts, fetchAudioTracks } from './apiService.js';
+import { fetchBookById, fetchCoverArts, fetchAudioTracks } from './apiService.js'; 
 import { formatPlayerData } from './dataFormatter.js';
 import { initAudiobookCover } from './initAudiobookCover.js';
 import { playerNavigation } from './playerNavigation.js';
 import { playerProgressBar } from './playerProgressBar.js';
 import { setupFavoriteButton } from './setupFavoriteButton.js';
 
+function getSelectedBookFromSession(audiobookId) {
+    const bookJson = sessionStorage.getItem("selectedBook");
+    if (!bookJson) return null;
+    try {
+        const book = JSON.parse(bookJson);
+        return Number(book.id) === Number(audiobookId) ? book : null;
+    } catch {
+        return null;
+    }
+}
 
 export async function loadPlayerData(audiobookId) {
     try {
-        const books = await fetchBooks();
-        const coverArts = await fetchCoverArts(audiobookId);
-        const audioTracks = await fetchAudioTracks(audiobookId);
+        // Essaie d'abord de récupérer les données depuis sessionStorage
+        const selectedBook = getSelectedBookFromSession(audiobookId);
 
+        let books, coverArts, audioTracks;
 
+        if (selectedBook) {
+            // Si on a les données, on simule la structure attendue par formatPlayerData
+            books = { books: [selectedBook] };
+            coverArts = { books: selectedBook.coverArt ? [selectedBook.coverArt] : [] };
+            // Pour les pistes audio, on peut stocker aussi dans sessionStorage ou faire un fetch
+            audioTracks = await fetchAudioTracks(audiobookId);
+        } else {
+            // Sinon fallback fetch complet
+            books = await fetchBookById(audiobookId);
+            coverArts = await fetchCoverArts(audiobookId);
+            audioTracks = await fetchAudioTracks(audiobookId);
+        }
 
-
-        //Affichage dans la console des données brutes pour exploration
         console.log("Données brutes des livres (books) :", books);
         console.log("Données brutes des couvertures (coverArts) :", coverArts);
         console.log("Données brutes des pistes audio (audioTracks) :", audioTracks);
-
-
-
 
         const formattedData = formatPlayerData(audiobookId, books, coverArts, audioTracks);
 
@@ -43,5 +60,4 @@ export async function loadPlayerData(audiobookId) {
     } catch (error) {
         console.error("Error loading player data:", error);
     }
-
 }
