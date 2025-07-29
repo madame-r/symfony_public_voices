@@ -146,4 +146,33 @@ public function fetchBooks(int $limit = 6, int $offset = 0, ?string $search = nu
             return ['error' => $e->getMessage()];
         }
     }
+
+
+
+    public function fetchBookById(int $id): ?array
+{
+    try {
+        $url = "https://librivox.org/api/feed/audiobooks/?id={$id}&format=json";
+
+        $response = $this->httpClient->request('GET', $url);
+
+        if ($response->getStatusCode() !== 200) {
+            throw new \Exception('Erreur lors de la récupération du livre depuis l\'API Librivox.');
+        }
+
+        $data = json_decode($response->getContent(), true);
+
+        if (!isset($data['books'][0])) {
+            // Livre non trouvé
+            return null;
+        }
+
+        return $data['books'][0];
+
+    } catch (\Exception $e) {
+        // Tu peux logger l'erreur ici si besoin
+        return null;
+    }
+}
+
 }
