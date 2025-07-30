@@ -1,4 +1,4 @@
-import { fetchBookById, fetchCoverArts, fetchAudioTracks } from './apiService.js'; 
+import { fetchBookById, fetchCoverArts, fetchAudioTracks } from './apiService.js';
 import { formatPlayerData } from './dataFormatter.js';
 import { initAudiobookCover } from './initAudiobookCover.js';
 import { playerNavigation } from './playerNavigation.js';
@@ -24,13 +24,11 @@ export async function loadPlayerData(audiobookId) {
         let books, coverArts, audioTracks;
 
         if (selectedBook) {
-            // Si on a les données, on simule la structure attendue par formatPlayerData
             books = { books: [selectedBook] };
-            coverArts = { books: selectedBook.coverArt ? [selectedBook.coverArt] : [] };
-            // Pour les pistes audio, on peut stocker aussi dans sessionStorage ou faire un fetch
+            coverArts = await fetchCoverArts(audiobookId);
             audioTracks = await fetchAudioTracks(audiobookId);
         } else {
-            // Sinon fallback fetch complet
+
             books = await fetchBookById(audiobookId);
             coverArts = await fetchCoverArts(audiobookId);
             audioTracks = await fetchAudioTracks(audiobookId);

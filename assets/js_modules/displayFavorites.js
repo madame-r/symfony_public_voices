@@ -1,6 +1,7 @@
 import { fetchFavorites } from './apiService.js';
 
 async function displayFavorites() {
+
   const container = document.getElementById('favorites-container');
 
   if (!container) {
@@ -20,6 +21,7 @@ async function displayFavorites() {
   container.innerHTML = ''; // Vide le container avant d'afficher
 
   favorites.forEach(book => {
+
     const div = document.createElement('div');
     div.className = 'favorite-item';
 
@@ -31,10 +33,18 @@ async function displayFavorites() {
       language: book.language || 'Unknown'  // Adapter selon la donnée reçue de l'API
     };
 
+  let coverUrl = '';
+
+  if (book.cover_thumbnail_url && book.cover_thumbnail_url.startsWith('http')) {
+    coverUrl = book.cover_thumbnail_url;
+  } else {
+    coverUrl = '/default_cover.jpg'; // ✅ Image existante dans /public
+  }
+
     div.innerHTML = `
-      <div class="fav-01">
-        <img src="${book.cover_thumbnail_url}" alt="Couverture de ${book.title}" />
-      </div>
+    <div class="fav-01">
+      <img src="${coverUrl}" alt="Couverture de ${book.title}" />
+    </div>
 
       <div class="fav-02">
         <h3>${book.title}</h3>

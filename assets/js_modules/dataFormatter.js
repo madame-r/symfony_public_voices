@@ -19,7 +19,7 @@ function formatBooksData(books, coverArtsArray) {
         // console.log(`Livre: ${book.title}, Auteur: ${authorName}, ID: ${book.id}`);
 
         const coverArt = coverArts.find(cover => {
-            console.log(`Comparaison des IDs de couverture: Livre ID ${book.id}, Couverture ID ${cover.id}`);
+            // console.log(`Comparaison des IDs de couverture: Livre ID ${book.id}, Couverture ID ${cover.id}`);
             return String(cover.id) === String(book.id);
         });
 
@@ -30,7 +30,7 @@ function formatBooksData(books, coverArtsArray) {
         }
 
         const bookId = Number(book.id);
-        console.log(`Type de bookId après conversion: ${typeof bookId}`);
+        // console.log(`Type de bookId après conversion: ${typeof bookId}`);
 
         return {
             id: bookId,
@@ -42,6 +42,7 @@ function formatBooksData(books, coverArtsArray) {
 }
 
 function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
+
     const coverArts = coverArtsArray.books || [];
     const audioTracks = audioTracksArray || [];
 
@@ -67,9 +68,14 @@ function formatPlayerData(bookId, books, coverArtsArray, audioTracksArray) {
 
     const coverArt = coverArts.find(cover => String(cover.id) === String(book.id));
 
-    // 📌 Fallback si coverArt absent
-    const cover = coverArt?.coverart_jpg || book.cover || "default_cover.jpg";
-    const coverThumbnail = coverArt?.coverart_thumbnail || book.coverThumbnail || "default_cover_thumb.jpg";
+    
+    const defaultCover = "/default_cover.jpg";          
+    const defaultCoverThumb = "/default_cover_thumb.jpg";
+
+    const cover = coverArt?.coverart_jpg || book.cover || defaultCover;
+    const coverThumbnail = coverArt?.coverart_thumbnail || book.coverThumbnail || defaultCoverThumb;
+
+
     const totalTime = coverArt?.totaltimesecs || 0;
 
     const audioTracksForBook = audioTracks
