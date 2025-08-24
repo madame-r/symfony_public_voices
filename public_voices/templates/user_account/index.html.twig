@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('styles/04_user_account.css') }}" />
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="user-account-parent">
+
+    <main class="main-user-account">
+
+        <div class="block10"></div>
+
+        <div class="breadcrumb"><a href="{{ path('app_home')}}">Back to the catalogue</a></div>
+
+
+
+        <div class="account-menu">
+
+            <h1>Hi {{ app.user.username }}</h1>
+
+            <a href="{{ path('app_user_account_favorites')}}">
+                <div class="submenu">
+                    <p>Favorite Audiobooks</p>
+                    <div><i class="bi bi-caret-right-fill"></i></div>
+                </div>
+            </a>
+
+        </div>
+
+
+        <div class="logout">
+            <a href="{{ path('app_logout') }}">
+                <div><i class="bi bi-power"></i></div>
+                <p>Log Out</p>
+            </a>
+
+        </div>
+
+
+
+    </main>
+
+</div>
+
+
+
+{% endblock %}

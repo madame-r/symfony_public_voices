@@ -1,0 +1,33 @@
+###> Workflow
+00_REF_BACK
+00_REF_FRONT
+
+
+###> symfony/framework-bundle ###
+public_voices/.env.local
+public_voices/.env.local.php
+public_voices/.env.*.local
+public_voices/config/secrets/prod/prod.decrypt.private.php
+public_voices/public/bundles/
+public_voices/var/
+public_voices/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+public_voices/phpunit.xml
+public_voices/.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+public_voices/.phpunit.result.cache
+public_voices/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/asset-mapper ###
+public_voices/public/assets/
+public_voices/assets/vendor/
+###< symfony/asset-mapper ###
+
+###> lexik/jwt-authentication-bundle ###
+public_voices/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

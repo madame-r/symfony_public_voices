@@ -1,0 +1,15 @@
+parameters:
+    # tu peux laisser vide ou ajouter d'autres paramètres si besoin
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+

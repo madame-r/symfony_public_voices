@@ -1,0 +1,155 @@
+/*  BODY ******************************************************* */
+
+
+/* Nav */
+
+
+#nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+
+#logo-black {
+    font-family: "Stanley";
+    font-size: 35px;
+}
+
+#logo-black a,
+#login a {
+    color: black;
+    text-decoration: none;
+}
+
+#logo-black a:hover,
+#login a:hover {
+    cursor: pointer;
+    color: #ffb700;
+}
+
+
+#login i {
+    font-size: 33px;
+}
+
+
+
+/* Search Bar */
+
+
+
+.search-bar {
+    display: flex;
+    width: 90vw;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+
+.search-input {
+    width: 80%;
+}
+
+
+.search-input input {
+    height: 5vh;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.search-icon {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    border: 1px solid black;
+    border-left: 0;
+}
+
+
+
+/* Catalog */
+
+.block {
+    height: 5vh;
+}
+
+#books-list {
+    width: 90vw;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    list-style-type: none;
+}
+
+#books-list li {
+    width: 90%;
+    justify-self: center;
+    margin: 20px 0;
+}
+
+#books-list li h3 {
+    font-size: 17px;
+}
+
+#books-list li p {
+    font-size: 15px;
+}
+
+#books-list li img {
+    border-radius: 20px;
+}
+
+
+
+
+
+/* MEDIA QUERIES ******************************************************* */
+
+@media screen and (min-width:1024px) {
+
+    /*  BODY ******************************************************* */
+
+
+    /* Nav */
+
+
+    #nav-top {
+        width: 50vw;
+        justify-self: center;
+    }
+
+    #logo-black p {
+        font-size: 40px;
+    }
+
+
+
+    /* Search Bar */
+
+    .search-bar {
+        width: 50vw;
+    }
+
+
+    .search-icon:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+
+
+
+
+    /* Catalog */
+
+    #books-list {
+        width: 50vw;
+        grid-template-columns: 33% 33% 33%;
+    }
+
+}

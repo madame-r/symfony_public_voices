@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Voices</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('styles/01_home.css') }}" />
+
+
+    {% block stylesheets %}
+    {% endblock %}
+
+
+
+    {% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <nav id="nav-top">
+
+        <div id="logo-black">
+            <a href="{{path('app_home')}}" id="logo-black">
+                Public Voices
+            </a>
+        </div>
+
+
+        {% if app.user %}
+        <div id="login">
+            <a href="{{ path('app_user_account') }}" id="user-account">
+                <i class="bi bi-person-fill-check"></i>
+            </a>
+        </div>
+        {% else %}
+        <div id="login">
+            <a href="{{ path('app_login') }}" id="user-account">
+                <i class="bi bi-person-circle"></i>
+            </a>
+        </div>
+        {% endif %}
+
+    </nav>
+
+
+    {% block body %}{% endblock %}
+</body>
+
+</html>

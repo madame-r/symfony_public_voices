@@ -1,0 +1,252 @@
+/*  HEADER ******************************************************* */
+
+/* Nav */
+
+
+#nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+#nav-top a {
+    color: black;
+}
+
+#favorite-login {
+    display: flex;
+}
+
+#favorite i:hover {
+    color: #ffd700;
+    cursor: pointer;
+}
+
+#login {
+    margin-left: 40px;
+}
+
+#xmark i,
+#favorite i,
+#login i {
+    font-size: 33px;
+}
+
+
+
+
+/*  MAIN ******************************************************* */
+
+#main-playback {
+    width: 100%;
+}
+
+
+
+#audiobook-player {
+    padding-top: 20px;
+    height: 100vh;
+}
+
+
+/* ON THE LEFT */
+
+.audiobook-details {
+    width: 80vw;
+    height: 35vh;
+    justify-self: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+#audiobook-title-author {
+    padding: 10px 0 0 10px;
+}
+
+#audiobook-title-author h1 {
+    font-family: "Meshed";
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+#now-playing {
+    font-weight: 200;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.audio-player {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    padding: 0 30px;
+    background-color: rgb(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+
+audio {
+    display: none;
+}
+
+
+/* Progress bar */
+
+
+#two-times {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.progress-bar {
+    height: 3vh;
+    display: flex;
+    align-items: center;
+}
+
+#progress {
+    height: 5px;
+    background-color: white;
+}
+
+
+/* Player Navigation */
+
+
+#play-pause-button {
+    background-color: transparent;
+    border: 0;
+}
+
+
+#play-pause-button i {
+    font-size: 40px;
+    color: white;
+}
+
+#prev-button i,
+#next-button i {
+    font-size: 30px;
+    color: white;
+}
+
+#play-pause-button i:hover {
+    cursor: pointer;
+}
+
+
+.controls {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#play-pause-button {
+    margin: 0 10px;
+}
+
+
+/* ON THE RIGHT*/
+
+
+.on-the-right {
+    width: 80vw;
+    justify-self: center;
+}
+
+.on-the-right h2 {
+    color: black;
+    padding-top: 20px;
+    font-family: "Stanley";
+    font-size: 30px;
+}
+
+.on-the-right ul {
+    padding-top: 20px;
+    font-size: 15px;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+
+
+.chapters-list li {
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.chapters-list li:hover {
+    background-color: #ffd700;
+    cursor: pointer;
+    color: black;
+}
+
+.chapters-list li a {
+    text-decoration: none;
+    color: black;
+}
+
+.chapters-list li a:hover {
+    color: black;
+
+}
+
+
+
+/* MEDIA QUERIES ******************************************************* */
+
+
+
+@media screen and (min-width:1280px) {
+
+    /*  MAIN ******************************************************* */
+
+
+    #audiobook-player {
+        display: flex;
+        margin-top: 40px;
+        width: 80vw;
+        justify-self: center;
+    }
+
+    #audiobook-player .on-the-left {
+        width: 50%;
+    }
+
+    #audiobook-player .on-the-right {
+        width: 50%;
+        padding-left: 6%;
+    }
+
+
+
+    /* ON THE LEFT */
+
+    .audiobook-details {
+        width: 35vw;
+        height: 65vh;
+    }
+
+
+    /* ON THE RIGHT*/
+
+    .on-the-right ul {
+    max-height: 50vh;
+}
+
+
+}

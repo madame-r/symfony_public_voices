@@ -1,0 +1,42 @@
+{% extends 'player/base.html.twig' %}
+
+{% block javascripts %}
+{% block importmap %}
+{{ importmap('script_player') }}
+{% endblock %}
+{% endblock %}
+
+
+{% block body %}
+
+<div id="audiobook-player">
+    <div class="on-the-left">
+        <div class="audiobook-details">
+
+            <div class="audio-player">
+                <h3 id="now-playing"></h3>
+                <audio id="audio-player" controls>
+                    <source id="audio-source" src="" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+                <div id="two-times">
+                    <span id="current-time">00:00</span> <span id="duration">00:00</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress" class="progress"></div>
+                </div>
+                <div class="controls">
+                    <div id="prev-button"><i class="bi bi-caret-left-fill"></i></div>
+                    <div id="play-pause-button"><i class="bi bi-play-circle"></i></div>
+                    <div id="next-button"><i class="bi bi-caret-right-fill"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="on-the-right">
+        <h2>Choose your chapter</h2>
+        <ul id="chapters-list" class="chapters-list"></ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block javascripts %}
+{% block importmap %}
+{{ importmap('script_home') }}
+{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+
+<main id="main-catalog">
+
+
+
+    <div class="block"></div>
+
+    <div class="search-bar">
+        <div class="search-input">
+            <input type="text" id="search-input" placeholder="Search by author..." />
+        </div>
+        <div class="search-icon">
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+
+    <ul id="books-list"></ul>
+
+
+</main>
+
+
+
+{% endblock %}
