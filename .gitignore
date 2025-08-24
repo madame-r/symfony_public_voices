@@ -4,6 +4,9 @@
 
 
 ###> symfony/framework-bundle ###
+public_voices/.env
+public_voices/.env.dev
+public_voices/.env.test
 public_voices/.env.local
 public_voices/.env.local.php
 public_voices/.env.*.local
